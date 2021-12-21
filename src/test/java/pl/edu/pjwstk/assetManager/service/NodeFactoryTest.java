@@ -16,6 +16,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class NodeFactoryTest {
 
     NodeFactory nodeFactory = new NodeFactory();
+    static AssetFactory assetFactory = new AssetFactory();
 
     @Test
     public void shouldCreateNodeReturnEmptyNode() {
@@ -26,20 +27,22 @@ public class NodeFactoryTest {
         assert(node.getAssets()).equals(Collections.emptySet());
     }
 
-//    @ParameterizedTest
-//    @MethodSource("createNodeArgumentsProvider")
-//    public void shouldCreateNodeReturnProperSizeOfAssets(int a, int b, int c, Set<Asset> expectedAssets) {
-//        // when
-//        Node node = nodeFactory.createNode(a, b, c);
-//
-//        // then
-//        assertThat(node.getAssets()).isEqualTo(expectedAssets);
-//    }
-//
-//    public static Stream<Arguments> createNodeArgumentsProvider() {
-//        return Stream.of(
-//                Arguments.of(1, 0, 0, Set.of())
-//        );
-//    }
+    @ParameterizedTest
+    @MethodSource("createNodeArgumentsProvider")
+    public void shouldCreateNodeReturnProperSizeOfAssets(int a, int b, int c, Set<Asset> expectedAssets) {
+        // when
+        Node node = nodeFactory.createNode(a, b, c);
+
+        // then
+        assertThat(node.getAssets()).isEqualTo(expectedAssets);
+    }
+
+    public static Stream<Arguments> createNodeArgumentsProvider() {
+        return Stream.of(
+                Arguments.of(1, 0, 0, assetFactory.createAssetSet(1, 0, 0)),
+                Arguments.of(1, 3, 0, assetFactory.createAssetSet(1, 3, 0)),
+                Arguments.of(90, 19, 5, assetFactory.createAssetSet(90, 19, 5))
+        );
+    }
 
 }
