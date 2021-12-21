@@ -26,20 +26,20 @@ public class NodeFactoryTest {
         assert(node.getAssets()).equals(Collections.emptySet());
     }
 
-    @ParameterizedTest
-    @MethodSource("createNodeArgumentsProvider")
-    public void shouldCreateNodeReturnProperSizeOfAssets(int a, int b, int c, Set<Asset> expectedAssets) {
-        // when
-        Node node = nodeFactory.createNode(a, b, c);
-
-        // then
-        assertThat(node.getAssets()).isEqualTo(expectedAssets);
-    }
-
-    public static Stream<Arguments> createNodeArgumentsProvider() {
-        return Stream.of(
-                Arguments.of(1, 0, 0, Set.of())
-        );
-    }
+//    @ParameterizedTest
+//    @MethodSource("createNodeArgumentsProvider")
+//    public void shouldCreateNodeReturnProperSizeOfAssets(int a, int b, int c, Set<Asset> expectedAssets) {
+//        // when
+//        Node node = nodeFactory.createNode(a, b, c);
+//
+//        // then
+//        assertThat(node.getAssets()).isEqualTo(expectedAssets);
+//    }
+//
+//    public static Stream<Arguments> createNodeArgumentsProvider() {
+//        return Stream.of(
+//                Arguments.of(1, 0, 0, Set.of())
+//        );
+//    }
 
 }
