@@ -1,5 +1,8 @@
 package pl.edu.pjwstk.assetManager.model;
 
+import pl.edu.pjwstk.assetManager.service.AssetFactory;
+
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -7,7 +10,7 @@ import java.util.Set;
 public class Node {
     static int count = 0;
     int id;
-    Set<Asset> assets;
+    Set<Asset> assets = new HashSet<>();
 
     public Node() {
         this.id = count++;
@@ -31,5 +34,15 @@ public class Node {
 
     public void setAssets(Set<Asset> assets) {
         this.assets = assets;
+    }
+
+    public Node addAsset(AssetType type) {
+        Asset asset = new AssetFactory().createAsset(type);
+        return addAsset(asset);
+    }
+
+    public Node addAsset(Asset asset) {
+        this.assets.add(asset);
+        return this;
     }
 }

@@ -19,4 +19,21 @@ public class AssetFactory {
         return asset;
     }
 
+    public Set<Asset> createAssetSet(int a, int b, int c) {
+        Set<Asset> assetSet = new HashSet<>();
+        if (a < 0 || b < 0 || c < 0) {
+            throw new IllegalArgumentException();
+        }
+        while(a-- > 0) {
+            assetSet.add(createAsset(AssetType.A));
+        }
+        while(b-- > 0) {
+            assetSet.add(createAsset(AssetType.B));
+        }
+        while(c-- > 0) {
+            assetSet.add(createAsset(AssetType.C));
+        }
+        return assetSet;
+    }
+
 }
