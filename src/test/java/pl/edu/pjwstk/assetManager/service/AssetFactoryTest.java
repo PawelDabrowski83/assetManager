@@ -3,8 +3,12 @@ package pl.edu.pjwstk.assetManager.service;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import pl.edu.pjwstk.assetManager.exception.UnknownAssetException;
 import pl.edu.pjwstk.assetManager.model.Asset;
 import pl.edu.pjwstk.assetManager.model.AssetType;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class AssetFactoryTest {
 
@@ -20,6 +24,11 @@ public class AssetFactoryTest {
         assert(assetA.getType()).equals(AssetType.A);
         assert(assetB.getType()).equals(AssetType.B);
         assert(assetC.getType()).equals(AssetType.C);
+    }
+
+    @Test()
+    public void shouldCreateAssetGivenNullThrowException() {
+        assertThatThrownBy(() -> assetFactory.createAsset(null)).isInstanceOf(UnknownAssetException.class);
     }
 
 }
