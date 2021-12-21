@@ -19,9 +19,4 @@ public class AssetFactory {
         return asset;
     }
 
-    public Set<Asset> createAssets(int a, int b, int c) {
-        Set<Asset> assetSet = new HashSet<>();
-        return null;
-    }
-
 }
