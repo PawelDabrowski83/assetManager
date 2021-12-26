@@ -15,6 +15,28 @@ public class AssetImpl implements Asset {
     }
 
     @Override
+    public int getOwnerId() {
+        return this.ownerId;
+    }
+
+    @Override
+    public boolean isActive() {
+        return controllerId == 0;
+    }
+
+    @Override
+    public boolean reserve(int controllerId) {
+        this.controllerId = controllerId;
+        return true;
+    }
+
+    @Override
+    public boolean clear() {
+        this.controllerId = 0;
+        return true;
+    }
+
+    @Override
     public void setType(AssetType type) {
         this.type = type;
     }
