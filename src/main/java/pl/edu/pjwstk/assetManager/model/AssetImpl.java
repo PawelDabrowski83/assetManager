@@ -3,8 +3,16 @@ package pl.edu.pjwstk.assetManager.model;
 import java.util.Objects;
 
 public class AssetImpl implements Asset {
-    int id;
+    static int count;
+    final int id;
     AssetType type;
+    final int ownerId;
+    int controllerId;
+
+    public AssetImpl(int ownerId) {
+        this.id = count++;
+        this.ownerId = ownerId;
+    }
 
     @Override
     public void setType(AssetType type) {

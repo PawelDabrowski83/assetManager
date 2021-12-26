@@ -8,13 +8,16 @@ import pl.edu.pjwstk.assetManager.model.AssetType;
 import java.util.HashSet;
 import java.util.Set;
 
+
+
 public class AssetFactory {
+    public static final int OWNER_ID_TEST = 13;
 
     public Asset createAsset(AssetType type) {
         if (type == null) {
             throw new UnknownAssetException();
         }
-        Asset asset = new AssetImpl();
+        Asset asset = new AssetImpl(OWNER_ID_TEST);
         asset.setType(type);
         return asset;
     }
