@@ -20,6 +20,11 @@ public class AssetImpl implements Asset {
     }
 
     @Override
+    public int getControllerId() {
+        return this.controllerId;
+    }
+
+    @Override
     public boolean isActive() {
         return controllerId == 0;
     }

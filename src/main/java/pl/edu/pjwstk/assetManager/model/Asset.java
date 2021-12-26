@@ -5,6 +5,7 @@ public interface Asset {
     AssetType getType();
     int getId();
     int getOwnerId();
+    int getControllerId();
     boolean isActive();
     boolean reserve(int controllerId);
     boolean clear();
