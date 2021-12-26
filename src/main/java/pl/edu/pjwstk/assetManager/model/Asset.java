@@ -4,4 +4,8 @@ public interface Asset {
     void setType(AssetType type);
     AssetType getType();
     int getId();
+    int getOwnerId();
+    boolean isActive();
+    boolean reserve(int controllerId);
+    boolean clear();
 }
